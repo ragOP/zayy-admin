@@ -1,0 +1,58 @@
+/* LoginPage.css */
+
+.container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffcc00; /* Vibrant background color */
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: center; /* Center the form group */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: center; /* Center the label */
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 80%; /* Set input width to 80% */
+    padding: 8px; /* Adjust padding */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto; /* Center the input fields */
+  }
+  
+  button {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Center the button */
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+      
