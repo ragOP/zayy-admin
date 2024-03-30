@@ -9,9 +9,24 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Implement your login logic here, for simplicity, let's just redirect to the dashboard
-    navigate('/dashboard');
+  const handleLogin = async(e) => {
+    e.preventDefault();
+   try{
+    const response = await fetch ("https://zayy-backend.onrender.com/api/auth/admin/login",{
+      method:"POST",
+      headers :{'Content-Type':"application/json"},
+      body: JSON.stringify({ email: username, password })
+    });
+    if(response.ok){
+      const data= await response.json();
+      localStorage.setItem("token",data.token);
+      navigate("/dashboard");
+    }else 
+    console.error("Login failed ");
+   }catch (error){
+    console.log("Error",error)
+   }
+  
   };
 
   return (
@@ -26,8 +41,8 @@ function LoginPage() {
           <label>Password:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type="submit">Login</button>
-      </form>
+        <button type="submit" >Login</button>
+        </form>
     </div>
   );
 }
