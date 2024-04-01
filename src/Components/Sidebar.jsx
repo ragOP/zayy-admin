@@ -1,79 +1,29 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function SwipeableTemporaryDrawer() {
-  const [state, setState] = React.useState({
-    left: false,
-  });
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState({ left: open });
-  };
-
-  const list = () => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+function Sidebar() {
   return (
-    <div>
-      <Button onClick={toggleDrawer(true)}>Open Left Drawer</Button>
-      <SwipeableDrawer
-        anchor="left"
-        open={state.left}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-      >
-        {list()}
-      </SwipeableDrawer>
+    <div className="bg-gray-900 text-white h-screen w-48 p-4 flex flex-col">
+      <Link to="/dashboard/customers" className="text-white no-underline mb-4">
+        🤵 Customer List
+      </Link>
+      <Link to="/dashboard/customers" className="text-white no-underline mb-4">
+        🤵 Add Product
+      </Link>
+      <Link to="/dashboard/sellers" className="text-white no-underline mb-4">
+        🏪 Seller List
+      </Link>
+      <Link to="/dashboard/products" className="text-white no-underline mb-4">
+        📦 All Products
+      </Link>
+      <Link to="/dashboard/wages" className="text-white no-underline mb-4">
+        💰 Wages
+      </Link>
+      <Link to="/dashboard/extra" className="text-white no-underline mb-4">
+        ➕ Extra
+      </Link>
     </div>
   );
 }
+
+export default Sidebar;
