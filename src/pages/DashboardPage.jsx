@@ -1,15 +1,26 @@
-import React from 'react';
-import ButtonAppBar from '../Components/Navbar';
-import SwipeableTemporaryDrawer from '../Components/Sidebar';
+import React from "react";
+import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 
-const DashboardPage = () => {
+function DashboardPage() {
   return (
     <div>
-    <ButtonAppBar/>
-    <SwipeableTemporaryDrawer/>
-      
+      <Header />
+      <div style={contentStyle}>
+        <Sidebar />
+        <div style={{ marginLeft: "220px" }}>
+          {" "}
+          <h2 className="text-center mt-3 text-3xl font-bold">
+            Welcome to the Dashboard!
+          </h2>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default DashboardPage
+const contentStyle = {
+  display: "flex",
+};
+
+export default DashboardPage;
