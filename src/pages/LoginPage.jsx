@@ -41,10 +41,9 @@ function LoginPage() {
         }, 2000);
       }
     } catch (error) {
-      const parsedError = JSON.parse(error.message);
-      console.log("Error message:", parsedError.message);
+      console.log("Error message:", error);
       toast.update(loadingToastId, {
-        render: parsedError.message,
+        render: error.message,
         type: "error",
         autoClose: 2000,
       });
