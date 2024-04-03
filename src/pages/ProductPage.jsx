@@ -6,6 +6,10 @@ import { ToastContainer, toast } from "react-toastify";
 
 const ProductPage = () => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const getAllProductData = async () => {
     let loadingToastId;
@@ -45,9 +49,27 @@ const ProductPage = () => {
       });
     }
   };
+
   useEffect(() => {
     getAllProductData();
   }, []);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    toast.success(`Page ${page} loaded`, {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
@@ -91,7 +113,7 @@ const ProductPage = () => {
                   </tr>
                 </thead>
                 <tbody className="text-center">
-                  {data.map((item) => (
+                  {currentItems.map((item) => (
                     <tr key={item.id}>
                       <td className="border px-4 py-2 font-semibold">
                         <Link to={`/api/admin/getProduct/${item._id}`}>
@@ -132,6 +154,26 @@ const ProductPage = () => {
                   ))}
                 </tbody>
               </table>
+              <div className="flex justify-center mt-4">
+                <nav className="inline-flex">
+                  <ul className="flex items-center">
+                    {Array.from({ length: totalPages }).map((_, index) => (
+                      <li key={index}>
+                        <button
+                          className={`px-5 py-1 rounded-md  text-center focus:outline-none ${
+                            currentPage === index + 1
+                              ? "bg-gray-900 text-gray-50"
+                              : "bg-gray-300 text-gray-900"
+                          }`}
+                          onClick={() => handlePageChange(index + 1)}
+                        >
+                          {index + 1}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
             </div>
           </div>
         )}
