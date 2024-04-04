@@ -2,15 +2,24 @@ import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import Sidebar from "../Components/Sidebar";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
 
   const token = localStorage.getItem("token");
+  let loadingToastId;
 
   const handleApprove = async () => {
     try {
+      loadingToastId = toast.info("Ipdating product, please wait...", {
+        position: "bottom-right",
+        autoClose: false,
+        hideProgressBar: false,
+        progress: undefined,
+        theme: "light",
+      });
       const response = await fetch(
         `https://zayy-backend.onrender.com/api/admin/approveProduct/${id}`,
         {
@@ -22,15 +31,32 @@ const SingleProductPage = () => {
       );
       if (response.ok) {
         const products = await response.json();
+        toast.update(loadingToastId, {
+          render: products.message,
+          type: "success",
+          autoClose: 2000,
+        });
         setData(products.product);
       }
     } catch (error) {
       console.log("Error message:", error);
+      toast.update(loadingToastId, {
+        render: error.message,
+        type: "error",
+        autoClose: 2000,
+      });
     }
   };
 
   const getSpecificData = async () => {
     try {
+      loadingToastId = toast.info("Fetching product data, please wait...", {
+        position: "bottom-right",
+        autoClose: false,
+        hideProgressBar: false,
+        progress: undefined,
+        theme: "light",
+      });
       const response = await fetch(
         `https://zayy-backend.onrender.com/api/admin/getProduct/${id}`,
         {
@@ -42,19 +68,36 @@ const SingleProductPage = () => {
       );
       if (response.ok) {
         const product = await response.json();
+        toast.update(loadingToastId, {
+          render: "Data fetched sucessfully",
+          type: "success",
+          autoClose: 2000,
+        });
         setData(product[0]);
       }
     } catch (error) {
       console.log("Error message:", error);
+      toast.update(loadingToastId, {
+        render: error.message,
+        type: "error",
+        autoClose: 2000,
+      });
     }
   };
   console.log(data);
   useEffect(() => {
     getSpecificData();
-  }, [SingleProductPage]);
+  }, []);
 
   return (
     <div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeButton={false}
+        theme="light"
+      />
       <Header />
       <div className="flex">
         <Sidebar />
