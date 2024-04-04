@@ -116,7 +116,7 @@ const ProductPage = () => {
                   {currentItems.map((item) => (
                     <tr key={item.id}>
                       <td className="border px-4 py-2 font-semibold">
-                        <Link to={`/api/admin/getProduct/${item._id}`}>
+                        <Link to={`/dashboard/product/${item._id}`}>
                           {item.name}
                         </Link>
                       </td>
