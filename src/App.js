@@ -7,6 +7,7 @@ import DashboardPage from "./pages/DashboardPage";
 import ProductPage from "./pages/ProductPage";
 import UsersPage from "./pages/UsersPage";
 import SellerPage from "./pages/SellerPage";
+import SingleProductPage from "./pages/SingleProductPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/dashboard/products" element={<ProductPage />} />
         <Route path="/dashboard/users" element={<UsersPage />} />
         <Route path="/dashboard/sellers" element={<SellerPage />} />
+        <Route path="/dashboard/product/:id" element={<SingleProductPage />} />
       </Routes>
     </Router>
   );
