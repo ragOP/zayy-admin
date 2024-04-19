@@ -16,6 +16,12 @@ function Sidebar() {
       <Link to="/dashboard/wages" className="text-white no-underline mb-4">
         💰 Wages
       </Link>
+      <Link to="/dashboard/thumbnail" className="text-white no-underline mb-4">
+        💰 Add Thumbnail
+      </Link>
+      <Link to="/dashboard/banner" className="text-white no-underline mb-4">
+        💰 Add Banner
+      </Link>
       <Link to="/dashboard/extra" className="text-white no-underline mb-4">
         ➕ Extra
       </Link>

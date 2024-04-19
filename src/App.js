@@ -8,6 +8,8 @@ import ProductPage from "./pages/ProductPage";
 import UsersPage from "./pages/UsersPage";
 import SellerPage from "./pages/SellerPage";
 import SingleProductPage from "./pages/SingleProductPage";
+import ThumbnailPage from "./pages/ThumbnailPage";
+import BannerPage from "./pages/BannerPage";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/dashboard/products" element={<ProductPage />} />
         <Route path="/dashboard/users" element={<UsersPage />} />
         <Route path="/dashboard/sellers" element={<SellerPage />} />
+        <Route path="/dashboard/thumbnail" element={<ThumbnailPage />} />
+        <Route path="/dashboard/banner" element={<BannerPage/>} />
         <Route path="/dashboard/product/:id" element={<SingleProductPage />} />
       </Routes>
     </Router>
