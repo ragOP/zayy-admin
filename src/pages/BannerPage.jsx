@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
@@ -7,13 +7,13 @@ const BannerPage = () => {
   const navigate = useNavigate();
 
   const [brands, setBrands] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [selectedBrandId, setSelectedBrandId] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedBrandId, setSelectedBrandId] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     image: null,
     brandId: "",
-  
+    type: "",
   });
 
   const fileInputRef = useRef(null);
@@ -41,29 +41,31 @@ const BannerPage = () => {
         setBrands(sellerData);
       }
     } catch (error) {
-      console.error('Error fetching brands:', error);
+      console.error("Error fetching brands:", error);
     }
   };
 
   const handleBrandChange = (event) => {
     const selectedBrandName = event.target.value;
     setSelectedBrand(selectedBrandName);
-    const selectedBrand = brands.find(brand => brand.name === selectedBrandName);
+    const selectedBrand = brands.find(
+      (brand) => brand.name === selectedBrandName
+    );
 
     if (selectedBrand) {
       setSelectedBrandId(selectedBrand._id);
-      setFormData(prevFormData => ({
+      setFormData((prevFormData) => ({
         ...prevFormData,
         name: selectedBrandName,
         brandId: selectedBrand._id,
-        type:selectedBrand.business_type
+        type: selectedBrand.business_type,
       }));
     } else {
-      setSelectedBrandId('');
-      setFormData(prevFormData => ({
+      setSelectedBrandId("");
+      setFormData((prevFormData) => ({
         ...prevFormData,
         name: "",
-        brandId: ""
+        brandId: "",
       }));
     }
   };
@@ -73,7 +75,7 @@ const BannerPage = () => {
     let loadingToastId;
     try {
       const formDataForRequest = new FormData();
-      console.log(formData,"helooooo")
+      console.log(formData, "helooooo");
       for (const key in formData) {
         formDataForRequest.append(key, formData[key]);
       }
@@ -84,7 +86,7 @@ const BannerPage = () => {
         progress: undefined,
         theme: "light",
       });
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const response = await fetch(
         "https://zayy-backend.onrender.com/api/admin/banners",
         {
@@ -98,8 +100,8 @@ const BannerPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-    
-        console.log(data)
+
+        console.log(data);
         toast.update(loadingToastId, {
           render: "Successfully",
           type: "success",
@@ -120,7 +122,6 @@ const BannerPage = () => {
         type: "error",
         autoClose: 2000,
       });
-
     }
   };
 
