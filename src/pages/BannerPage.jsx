@@ -79,7 +79,7 @@ const BannerPage = () => {
       for (const key in formData) {
         formDataForRequest.append(key, formData[key]);
       }
-      loadingToastId = toast.info("Logging in. Please wait...", {
+      loadingToastId = toast.info("Uploading banner, please wait", {
         position: "bottom-right",
         autoClose: false,
         hideProgressBar: false,
@@ -103,7 +103,7 @@ const BannerPage = () => {
 
         console.log(data);
         toast.update(loadingToastId, {
-          render: "Successfully",
+          render: "Upload successfully",
           type: "success",
           autoClose: 2000,
         });
