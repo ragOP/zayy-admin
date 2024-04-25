@@ -13,7 +13,7 @@ const SingleProductPage = () => {
 
   const handleApprove = async () => {
     try {
-      loadingToastId = toast.info("Ipdating product, please wait...", {
+      loadingToastId = toast.info("Updating product, please wait...", {
         position: "bottom-right",
         autoClose: false,
         hideProgressBar: false,
@@ -69,7 +69,7 @@ const SingleProductPage = () => {
       if (response.ok) {
         const product = await response.json();
         toast.update(loadingToastId, {
-          render: "Data fetched sucessfully",
+          render: "Data fetched successfully",
           type: "success",
           autoClose: 2000,
         });
@@ -84,7 +84,7 @@ const SingleProductPage = () => {
       });
     }
   };
-  console.log(data);
+
   useEffect(() => {
     getSpecificData();
   }, []);
@@ -159,14 +159,16 @@ const SingleProductPage = () => {
                 Discount: {data.discount}% off
               </p>
             </div>
-            <div className="flex justify-between items-center mt-4">
-              <button
-                onClick={handleApprove}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded focus:outline-none"
-              >
-                Approve
-              </button>
-            </div>
+            {data.status !== "approved" && ( // Render the button only if status is not "approved"
+              <div className="flex justify-between items-center mt-4">
+                <button
+                  onClick={handleApprove}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded focus:outline-none"
+                >
+                  Approve
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

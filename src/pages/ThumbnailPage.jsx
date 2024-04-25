@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from "react-toastify";
+import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
@@ -77,7 +79,7 @@ const ThumbnailPage = () => {
       for (const key in formData) {
         formDataForRequest.append(key, formData[key]);
       }
-      loadingToastId = toast.info("Logging in. Please wait...", {
+      loadingToastId = toast.info("Api Fetch. Please wait...", {
         position: "bottom-right",
         autoClose: false,
         hideProgressBar: false,
@@ -158,65 +160,65 @@ const ThumbnailPage = () => {
         closeButton={false}
         theme="light"
       />
-
-      <div>
-        <h2>Select Brand</h2>
-        <select value={selectedBrand} onChange={handleBrandChange}>
-          <option value="">Select a Brand</option>
-          {brands.map((brand, index) => (
-            <option key={index} value={brand.name}>
-              {brand.name}
-            </option>
-          ))}
-        </select>
-        {selectedBrandId && <p>Selected Brand ID: {selectedBrandId}</p>}
-        <h2 className="text-4xl font-bold mb-4 text-gray-50">Add Product</h2>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 bg-gray-50 py-5 px-3 min-w-fit"
-        >
-          <div>
-            <label
-              htmlFor="images"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Product Images:
-            </label>
-            <div className="mt-1 flex">
-              <button
-                type="button"
-                onClick={handleAddImages}
-                className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Add Images
-              </button>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                multiple
-                ref={fileInputRef}
-                onChange={handleChange}
-                className="hidden"
-              />
-            </div>
-            {imagePreview && (
-              <img
-                src={imagePreview}
-                alt="Product Preview"
-                className="mt-2 rounded-md shadow-md"
-                style={{ maxWidth: "200px" }}
-              />
-            )}
-          </div>
-          <button
-            type="submit"
-            className="mt-4 w-full flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      <Header />
+      <div className="flex">
+        <Sidebar />
+        <div className="flex flex-col m-10">
+          <h2 className="text-3xl font-bold mb-6">Select Brand</h2>
+          <select
+            className="p-3 mb-6 rounded-md border border-gray-300 shadow-md text-lg"
+            value={selectedBrand}
+            onChange={handleBrandChange}
           >
-            Submit
-          </button>
-        </form>
+            <option value="">Select a Brand</option>
+            {brands.map((brand, index) => (
+              <option key={index} value={brand.name}>
+                {brand.name}
+              </option>
+            ))}
+          </select>
+          {selectedBrandId && <p>Selected Brand ID: {selectedBrandId}</p>}
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-lg">
+            <div className="flex flex-col space-y-4">
+              <label htmlFor="images" className="text-lg font-semibold text-gray-800">
+                Thumbnail Images:
+              </label>
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  onClick={handleAddImages}
+                  className="py-3 px-6 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
+                >
+                  Add Images
+                </button>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  multiple
+                  ref={fileInputRef}
+                  onChange={handleChange}
+                  className="hidden"
+                />
+              </div>
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Product Preview"
+                  className="mt-2 rounded-md shadow-md"
+                  style={{ maxWidth: "300px" }}
+                />
+              )}
+            </div>
+            <button
+              type="submit"
+              className="py-3 px-6 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

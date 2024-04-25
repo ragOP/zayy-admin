@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 
 const BannerPage = () => {
   const navigate = useNavigate();
@@ -73,11 +75,11 @@ const BannerPage = () => {
     let loadingToastId;
     try {
       const formDataForRequest = new FormData();
-      console.log(formData,"helooooo")
+      // console.log(formData,"helooooo")
       for (const key in formData) {
         formDataForRequest.append(key, formData[key]);
       }
-      loadingToastId = toast.info("Logging in. Please wait...", {
+      loadingToastId = toast.info("Api Fetch. Please wait...", {
         position: "bottom-right",
         autoClose: false,
         hideProgressBar: false,
@@ -153,17 +155,23 @@ const BannerPage = () => {
 
   return (
     <>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        closeButton={false}
-        theme="light"
-      />
-
-      <div>
-        <h2>Select Brand</h2>
-        <select value={selectedBrand} onChange={handleBrandChange}>
+    <ToastContainer
+      position="bottom-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      closeButton={false}
+      theme="light"
+    />
+    <Header />
+    <div className="flex">
+      <Sidebar />
+      <div className="flex flex-col m-10 space-y-6">
+        <h2 className="text-3xl font-bold">Select Brand</h2>
+        <select
+          className="p-3 rounded-md border border-gray-300 shadow-md text-lg"
+          value={selectedBrand}
+          onChange={handleBrandChange}
+        >
           <option value="">Select a Brand</option>
           {brands.map((brand, index) => (
             <option key={index} value={brand.name}>
@@ -172,23 +180,16 @@ const BannerPage = () => {
           ))}
         </select>
         {selectedBrandId && <p>Selected Brand ID: {selectedBrandId}</p>}
-        <h2 className="text-4xl font-bold mb-4 text-gray-50">Add Product</h2>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 bg-gray-50 py-5 px-3 min-w-fit"
-        >
-          <div>
-            <label
-              htmlFor="images"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Product Images:
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-6 bg-white p-8 rounded-lg shadow-lg">
+          <div className="flex flex-col space-y-4">
+            <label htmlFor="images" className="text-lg font-semibold text-gray-800">
+              Banner Images:
             </label>
-            <div className="mt-1 flex">
+            <div className="flex items-center">
               <button
                 type="button"
                 onClick={handleAddImages}
-                className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="py-3 px-6 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
               >
                 Add Images
               </button>
@@ -208,19 +209,21 @@ const BannerPage = () => {
                 src={imagePreview}
                 alt="Product Preview"
                 className="mt-2 rounded-md shadow-md"
-                style={{ maxWidth: "200px" }}
+                style={{ maxWidth: "300px" }}
               />
             )}
           </div>
           <button
             type="submit"
-            className="mt-4 w-full flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="self-start py-3 px-6 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Submit
           </button>
         </form>
       </div>
-    </>
+    </div>
+  </>
+
   );
 };
 
