@@ -121,12 +121,14 @@ const UsersPage = () => {
                   {currentItems.map((item) => (
                     <tr key={item.id}>
                       <td className="border px-4 py-2 font-semibold">
-                        <Link to={`/api/admin/getProduct/${item._id}`}>
+                        <Link to={`/dashboard/user/details/${item._id}`}>
                           {item.name}
                         </Link>
                       </td>
                       <td className="border px-4 py-2 font-semibold">
-                        {item.number}
+                      <Link to={`/dashboard/user/details/${item._id}`}>
+                          {item.number}
+                        </Link>
                       </td>
                       <td className="border px-4 py-2 font-semibold">
                         {item.city}

@@ -10,6 +10,7 @@ import SellerPage from "./pages/SellerPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import ThumbnailPage from "./pages/ThumbnailPage";
 import BannerPage from "./pages/BannerPage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/dashboard/thumbnail" element={<ThumbnailPage />} />
         <Route path="/dashboard/banner" element={<BannerPage/>} />
         <Route path="/dashboard/product/:id" element={<SingleProductPage />} />
+        <Route path="/dashboard/user/details/:id" element={<DetailPage />} />
       </Routes>
     </Router>
   );
