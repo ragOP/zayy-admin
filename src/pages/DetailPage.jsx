@@ -47,6 +47,7 @@ const DetailPage = () => {
           autoClose: 2000,
         });
       } else {
+        setData([]);
         toast.update(loadingToastId, {
           render: "No Data Found.",
           type: "error",
