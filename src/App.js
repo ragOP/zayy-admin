@@ -12,21 +12,22 @@ import ThumbnailPage from "./pages/ThumbnailPage";
 import BannerPage from "./pages/BannerPage";
 import DetailPage from "./pages/DetailPage";
 import AddCategory from "./pages/AddCategory";
+import Protected from "./pages/Auth/Protected";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/dashboard/products" element={<ProductPage />} />
-        <Route path="/dashboard/users" element={<UsersPage />} />
-        <Route path="/dashboard/sellers" element={<SellerPage />} />
-        <Route path="/dashboard/thumbnail" element={<ThumbnailPage />} />
-        <Route path="/dashboard/banner" element={<BannerPage/>} />
-        <Route path="/dashboard/product/:id" element={<SingleProductPage />} />
-        <Route path="/dashboard/user/details/:id" element={<DetailPage />} />
-        <Route path="/dashboard/addcategory" element={<AddCategory />} />
+        <Route path="/" element={<Protected element={<LoginPage />} screen="login"/>} />
+        <Route path="/dashboard" element={<Protected element={<DashboardPage />} />} />
+        <Route path="/dashboard/products" element={<Protected element={<ProductPage />} />} />
+        <Route path="/dashboard/users" element={<Protected element={<UsersPage />} />} />
+        <Route path="/dashboard/sellers" element={<Protected element={<SellerPage />} />} />
+        <Route path="/dashboard/thumbnail" element={<Protected element={<ThumbnailPage />} />} />
+        <Route path="/dashboard/banner" element={<Protected element={<BannerPage />} />} />
+        <Route path="/dashboard/product/:id" element={<Protected element={<SingleProductPage />} />} />
+        <Route path="/dashboard/user/details/:id" element={<Protected element={<DetailPage />} />} />
+        <Route path="/dashboard/addcategory" element={<Protected element={<AddCategory />} />} />
 
       </Routes>
     </Router>
