@@ -11,6 +11,7 @@ import SingleProductPage from "./pages/SingleProductPage";
 import ThumbnailPage from "./pages/ThumbnailPage";
 import BannerPage from "./pages/BannerPage";
 import DetailPage from "./pages/DetailPage";
+import AddCategory from "./pages/AddCategory";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <Route path="/dashboard/banner" element={<BannerPage/>} />
         <Route path="/dashboard/product/:id" element={<SingleProductPage />} />
         <Route path="/dashboard/user/details/:id" element={<DetailPage />} />
+        <Route path="/dashboard/addcategory" element={<AddCategory />} />
+
       </Routes>
     </Router>
   );

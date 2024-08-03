@@ -22,8 +22,8 @@ function Sidebar() {
       <Link to="/dashboard/banner" className="text-white no-underline mb-4">
       📰 Add Banner
       </Link>
-      <Link to="/dashboard/extra" className="text-white no-underline mb-4">
-        ➕ Extra
+      <Link to="/dashboard/addcategory" className="text-white no-underline mb-4">
+        ➕ Add Category
       </Link>
     </div>
   );
