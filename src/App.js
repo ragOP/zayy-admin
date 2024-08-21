@@ -13,6 +13,7 @@ import BannerPage from "./pages/BannerPage";
 import DetailPage from "./pages/DetailPage";
 import AddCategory from "./pages/AddCategory";
 import Protected from "./pages/Auth/Protected";
+import Notification from "./pages/Notification";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
         <Route path="/dashboard/product/:id" element={<Protected element={<SingleProductPage />} />} />
         <Route path="/dashboard/user/details/:id" element={<Protected element={<DetailPage />} />} />
         <Route path="/dashboard/addcategory" element={<Protected element={<AddCategory />} />} />
+        <Route path="/notification" element={<Protected element={<Notification />} />} />
+
 
       </Routes>
     </Router>

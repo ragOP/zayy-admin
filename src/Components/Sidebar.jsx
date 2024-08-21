@@ -25,6 +25,9 @@ function Sidebar() {
       <Link to="/dashboard/addcategory" className="text-white no-underline mb-4">
         ➕ Add Category
       </Link>
+      <Link to="/notification" className="text-white no-underline mb-4">
+      🔔 Notification
+      </Link>
     </div>
   );
 }
