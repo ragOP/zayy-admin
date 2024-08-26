@@ -11,7 +11,7 @@ const Notification = () => {
 
   const [formData, setFormData] = useState({
     title: "",
-    description: "", 
+    description: "",
     banner: null,
   });
 
@@ -103,15 +103,15 @@ const Notification = () => {
   return (
     <>
       <ToastContainer position="bottom-right" autoClose={5000} theme="light" />
-      <Header/>
+      <Header />
       <div className="flex">
-        <Sidebar/>
+        <Sidebar />
         <div
           className="p-8 flex items-center  flex-col bg-[white]"
           style={{ height: "100vh", width: "90%" }}
         >
           <h2 className="text-4xl font-bold mb-4 text-gray-900">
-            Notification
+           Push Notification
           </h2>
           <form
             onSubmit={handleSubmit}
@@ -123,7 +123,7 @@ const Notification = () => {
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
-            Title
+                  Title
                 </label>
                 <input
                   id="title"
@@ -155,7 +155,7 @@ const Notification = () => {
                   htmlFor="image"
                   className="block text-sm font-medium text-gray-700"
                 >
-                   Image:
+                  Image:
                 </label>
                 <div className="mt-1 flex">
                   <button
