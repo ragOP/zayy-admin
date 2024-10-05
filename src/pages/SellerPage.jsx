@@ -24,7 +24,7 @@ const SellerPage = () => {
       });
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://zayy-backend.onrender.com/api/admin/getAllSeller",
+        "https://zayy-backend-iz7q.onrender.com/api/admin/getAllSeller",
         {
           method: "POST",
           headers: {

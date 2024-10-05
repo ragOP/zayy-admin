@@ -29,7 +29,7 @@ const ThumbnailPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://zayy-backend.onrender.com/api/admin/getAllSeller",
+        "https://zayy-backend-iz7q.onrender.com/api/admin/getAllSeller",
         {
           method: "GET",
           headers: {
@@ -89,7 +89,7 @@ const ThumbnailPage = () => {
       });
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://zayy-backend.onrender.com/api/admin/thumbnails",
+        "https://zayy-backend-iz7q.onrender.com/api/admin/thumbnails",
         {
           method: "POST",
           body: formDataForRequest,

@@ -21,7 +21,7 @@ const SingleProductPage = () => {
         theme: "light",
       });
       const response = await fetch(
-        `https://zayy-backend.onrender.com/api/admin/approveProduct/${id}`,
+        `https://zayy-backend-iz7q.onrender.com/api/admin/approveProduct/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -58,7 +58,7 @@ const SingleProductPage = () => {
         theme: "light",
       });
       const response = await fetch(
-        `https://zayy-backend.onrender.com/api/admin/getProduct/${id}`,
+        `https://zayy-backend-iz7q.onrender.com/api/admin/getProduct/${id}`,
         {
           method: "GET",
           headers: {

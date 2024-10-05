@@ -23,7 +23,7 @@ const ProductPage = () => {
       });
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://zayy-backend.onrender.com/api/admin/getAllProducts",
+        "https://zayy-backend-iz7q.onrender.com/api/admin/getAllProducts",
         {
           method: "GET",
           headers: {
