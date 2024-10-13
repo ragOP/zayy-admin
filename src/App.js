@@ -14,6 +14,7 @@ import DetailPage from "./pages/DetailPage";
 import AddCategory from "./pages/AddCategory";
 import Protected from "./pages/Auth/Protected";
 import Notification from "./pages/Notification";
+import DiscoverPostPage from "./pages/DiscoverPostPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/dashboard/user/details/:id" element={<Protected element={<DetailPage />} />} />
         <Route path="/dashboard/addcategory" element={<Protected element={<AddCategory />} />} />
         <Route path="/notification" element={<Protected element={<Notification />} />} />
+        <Route path="/discover-post" element={<Protected element={<DiscoverPostPage />} />} />
 
 
       </Routes>
