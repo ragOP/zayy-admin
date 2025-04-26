@@ -66,7 +66,7 @@ const Notification = () => {
       });
 
       const response = await fetch(
-        "https://zayy-backend-iz7q.onrender.com/api/admin/sendNotification",
+        "https://zayy-backend-1nsc.onrender.com/api/admin/sendNotification",
         {
           method: "POST",
           headers: {

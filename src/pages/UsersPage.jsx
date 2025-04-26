@@ -23,7 +23,7 @@ const UsersPage = () => {
       });
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://zayy-backend-iz7q.onrender.com/api/admin/getAllUser",
+        "https://zayy-backend-1nsc.onrender.com/api/admin/getAllUser",
         {
           method: "GET",
           headers: {

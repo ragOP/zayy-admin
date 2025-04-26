@@ -98,7 +98,7 @@ const AddCategory = () => {
       });
 
       const response = await fetch(
-        "https://zayy-backend-iz7q.onrender.com/api/admin/addCategory",
+        "https://zayy-backend-1nsc.onrender.com/api/admin/addCategory",
         {
           method: "POST",
           headers: {

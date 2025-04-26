@@ -27,8 +27,8 @@ const DetailPage = () => {
 
       const url =
         dropdown === "Cart"
-          ? `https://zayy-backend-iz7q.onrender.com/api/admin/getUserCart/${id}`
-          : `https://zayy-backend-iz7q.onrender.com/api/admin/getUserWishlist/${id}`;
+          ? `https://zayy-backend-1nsc.onrender.com/api/admin/getUserCart/${id}`
+          : `https://zayy-backend-1nsc.onrender.com/api/admin/getUserWishlist/${id}`;
 
       const response = await fetch(url, {
         method: "GET",

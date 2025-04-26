@@ -21,7 +21,7 @@ function LoginPage() {
         theme: "light",
       });
       const response = await fetch(
-        "https://zayy-backend-iz7q.onrender.com/api/auth/admin/login",
+        "https://zayy-backend-1nsc.onrender.com/api/auth/admin/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
